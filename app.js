@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
@@ -23,7 +22,7 @@ const Group = mongoose.model("Group", groupSchema);
 
 app.set("view engine", "ejs");
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("public"));
 const group1 = new Group({
   title: "The General Group",
