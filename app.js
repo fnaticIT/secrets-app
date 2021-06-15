@@ -5,11 +5,27 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://Naman_Balai:naman666@cluster0.pblb7.mongodb.net/secretDB", { useNewUrlParser: true, useUnifiedTopology: true });
 //const ejsLint = require('ejs-lint');
 const app = express();
-
+app.use(express.json());
+app.use(express.urlencoded());
+const secretSchema = new mongoose.Schema({
+  name: {
+    type: String,
+  },
+  createdAt: { type: Date, default: Date.now },
+});
 const groupSchema = new mongoose.Schema({
-  title: String,
-  descrip: String,
-  secret: [String],
+  title: {
+    type: String,
+    required: true,
+  },
+  descrip: {
+    type: String,
+    required: true,
+    min: 10,
+  },
+  secret: {
+    type: [secretSchema],
+  },
 });
 
 // const secretSchema = new mongoose.Schema({
@@ -17,12 +33,12 @@ const groupSchema = new mongoose.Schema({
 //   descrip:String,
 //
 // });
+const Secret = mongoose.model("Secret", secretSchema);
 const Group = mongoose.model("Group", groupSchema);
 //const Secret = mongoose.model("Secret",secretSchema);
 
 app.set("view engine", "ejs");
 
-app.use(express.json());
 app.use(express.static("public"));
 const group1 = new Group({
   title: "The General Group",
@@ -62,10 +78,25 @@ app.post("/compose", function (req, res) {
     title: req.body.title,
     descrip: req.body.descrip,
   });
-  group.secret.push(req.body.secret);
-  group.save(function (err) {
-    if (!err) {
-      res.redirect("/");
+  const secret = new Secret({
+    name: req.body.secret,
+  });
+  console.log("yo");
+  console.log(secret);
+  secret.save(function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      group.secret.push(secret);
+
+      group.save(function (err) {
+        if (!err) {
+          console.log(secret);
+          res.redirect("/");
+        } else {
+          console.log(err);
+        }
+      });
     }
   });
 });
@@ -79,12 +110,18 @@ app.get("/groups/:groupid", function (req, res) {
 app.post("/groups", function (req, res) {
   id = req.body.gid;
   Group.findOne({ _id: id }, function (err, group) {
-    console.log(group);
-    group.secret.push(req.body.de);
+    const secret = new Secret({
+      name: req.body.de,
+    });
+
+    group.secret.push(secret);
+
     group.save();
+
+    //   group.secret.push(req.body.de);
+    //  group.save();
     //  const s="groups"+id
     res.redirect(`groups/${id}`);
-    console.log(group);
   });
 });
 app.get("/search", function (req, res) {
