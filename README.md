@@ -3,27 +3,30 @@ This is my first hands on experience at web dev , I have tried to create a secre
 
 1) You can create your own groups or join an existing one
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/55327084/126103045-11a88d4d-6ce5-472d-9184-035b97bb146f.png" width="350" height="350" title="hover text">
-</p>
+
+  <img src="https://user-images.githubusercontent.com/55327084/126103045-11a88d4d-6ce5-472d-9184-035b97bb146f.png">
+
 
 2) Just enter the group and share your secret anonymously
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/55327084/126103139-78d143d8-aa30-404d-b71e-c2077cf59a4d.png" width="350" height="350" title="hover text">
-</p>
+
+  <img src="https://user-images.githubusercontent.com/55327084/126103139-78d143d8-aa30-404d-b71e-c2077cf59a4d.png" >
+
 
 3) Website has a decent UI and its simple and convinient to use 
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/55327084/126103273-40cf5651-3255-4306-adb8-fb7baf52afff.png" width="350" height="350" title="hover text">
-</p>
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  <img src="https://user-images.githubusercontent.com/55327084/126103273-40cf5651-3255-4306-adb8-fb7baf52afff.png" >
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 website name - secreto 
--------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Link - https://intense-dusk-61961.herokuapp.com/
+
 ---------------------------------------------
 
 Stack used - Nodejs , Express , EJS 
