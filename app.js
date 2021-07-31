@@ -1,12 +1,15 @@
 const express = require("express");
 const ejs = require("ejs");
 const _ = require("lodash");
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://Naman_Balai:naman666@cluster0.pblb7.mongodb.net/secretDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 //const ejsLint = require('ejs-lint');
+dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
+//look for process.env.MONGO_URL in .env
 const secretSchema = new mongoose.Schema({
   name: {
     type: String,
