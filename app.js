@@ -6,7 +6,7 @@ mongoose.connect("mongodb+srv://Naman_Balai:naman666@cluster0.pblb7.mongodb.net/
 //const ejsLint = require('ejs-lint');
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded());
+
 const secretSchema = new mongoose.Schema({
   name: {
     type: String,
